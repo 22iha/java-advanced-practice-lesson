@@ -40,7 +40,7 @@ public class StartAppServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
-
+//S
         if (name != null && !name.isEmpty()) {
             GameApp app = new GameApp("何か");
 
