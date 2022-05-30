@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import app.CardGameApp;
 import app.GameApp;
 
 /**
@@ -14,7 +15,7 @@ import app.GameApp;
  */
 @WebServlet("/StartAppServlet")
 public class StartAppServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+//    private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,14 +41,28 @@ public class StartAppServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
-
+        String appType = request.getParameter("appType");
+        
+        //nameがnullか空文字かを判断する
         if (name != null && !name.isEmpty()) {
-            GameApp app = new GameApp("何か");
-
-            String result = app.start(name);
+        	
+            GameApp app;
+            //ゲームなら何か、カードならトランプ
+			if(appType.equals("game")) {
+        		app = new GameApp("何か");
+        	}else{
+        		app = new CardGameApp("トランプ");
+        	}
+			
+			// アプリ実行結果のメッセージを入れるための変数
+			String result = "";
+            
+			// startメソッドを呼び、戻り値を変数resultへ代入する
+            result = app.start(name);
 
             request.setAttribute("result", result);
         }
+    
 
         request.getRequestDispatcher("appStart.jsp").forward(request, response);
     }
