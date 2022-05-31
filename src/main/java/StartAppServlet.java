@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import app.App;
 import app.CardGameApp;
-import app.GameApp;
+import app.ClockApp;
+import app.DartsGameApp;
 
 /**
  * Servlet implementation class StartAppServlet
@@ -43,27 +45,39 @@ public class StartAppServlet extends HttpServlet {
         String name = request.getParameter("name");
         String appType = request.getParameter("appType");
         
-        //nameがnullか空文字かを判断する
-        if (name != null && !name.isEmpty()) {
-        	
-            GameApp app;
-            //ゲームなら何か、カードならトランプ
-			if(appType.equals("game")) {
-        		app = new GameApp("何か");
-        	}else{
-        		app = new CardGameApp("トランプ");
-        	}
+        App app = null;
+      //nameがnullか空文字かを判断する
+        if(name != null && !name.isEmpty()) {
+        
+	        switch (appType) {
+	        case "card":
+	        	app = new CardGameApp("トランプ");
+	        	break;
+	        case "darts":
+	        	app = new DartsGameApp("ダーツ");
+	        	break;
+	        case "clock":
+	        	app = new ClockApp();
+	        	break;
+	        }
 			
 			// アプリ実行結果のメッセージを入れるための変数
 			String result = "";
+			
+        	//その他
+			//例外処理
+			try {
+				result = app.start(name);
+			}catch(Exception ex){
+				result = "アプリの実行に失敗しました。" ;
+			}
             
 			// startメソッドを呼び、戻り値を変数resultへ代入する
-            result = app.start(name);
+            
 
             request.setAttribute("result", result);
         }
     
-
         request.getRequestDispatcher("appStart.jsp").forward(request, response);
     }
 }

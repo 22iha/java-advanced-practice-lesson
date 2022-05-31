@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Java応用_演習問題3</title>
+<title>Java応用_演習問題4</title>
 <style>
 body {
 	border: solid 2px #000080;
@@ -28,7 +28,7 @@ body {
 </head>
 <body>
 
-	<h1>Java応用 - 演習問題3</h1>
+	<h1>Java応用 - 演習問題4</h1>
 
 	<h2>ゲームアプリ実行ページ</h2>
 
@@ -41,10 +41,14 @@ body {
 	<form action="StartAppServlet" method="post">
 		<label>名前：</label> 
 		<input type="text" name="name"> 
-		<br> <label>アプリ：</label>
-		<label> <input type="radio" name="appType" value="card"checked /> トランプ</label> 
-		<label> <input type="radio" name="appType" value="game" />ゲーム</label>
-		<br><button type="submit">実行</button>
+		<br>
+		 <label>アプリ：</label>
+		<label> <input type="radio" name="appType" value="card" checked /> トランプ</label> 
+		<label> <input type="radio" name="appType" value="darts" /> ダーツ </label>
+		<label> <input type="radio" name="appType" value="clock" /> 時計 </label>
+		<label> <input type="radio" name="appType" value="others" /> その他 </label>
+		<br>
+		<button type="submit">実行</button>
 	</form>
 </body>
 </html>

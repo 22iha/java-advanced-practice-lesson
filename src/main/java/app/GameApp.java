@@ -1,10 +1,12 @@
 package app;
 
-public class GameApp {
+public abstract class GameApp implements App {
+	public abstract String play();
 	
 	//ゲームに使用する道具名を表す文字列
 	//フィールド
 	public String item;
+	
 	
 	//コンストラクタ
 	public GameApp() {
@@ -15,8 +17,9 @@ public class GameApp {
 	
 	//メソッド
 	public String start(String start) {
-		String m = start + "さんと" +item+"でゲームを開始します";
-		return m;
+		String m = start + "さんと" +item+"でゲームを開始します。";
+		String p = play();
+		return m + p;
 	}
 	
 }
