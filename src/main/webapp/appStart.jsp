@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Java応用_演習問題4</title>
+<title>Java応用_演習問題5</title>
 <style>
 body {
 	border: solid 2px #000080;
@@ -24,11 +24,12 @@ body {
 	margin: 5px;
 	padding: 10px;
 }
+
 </style>
 </head>
 <body>
 
-	<h1>Java応用 - 演習問題4</h1>
+	<h1>Java応用 - 演習問題5</h1>
 
 	<h2>ゲームアプリ実行ページ</h2>
 
