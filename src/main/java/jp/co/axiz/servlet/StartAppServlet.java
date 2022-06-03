@@ -81,12 +81,12 @@ public class StartAppServlet extends HttpServlet {
 
 			if (app instanceof GameApp) {
 				// GameAppを継承したクラスの場合、playTimeフィールドの値をリクエストスコープへセットする
-
+				
 				GameApp gameApp = (GameApp) app;
 				// 型をGameAppに変換
 				int playTime = gameApp.getPlayTime();
 				// playTimeフィールドの値を取得
-
+				
 				request.setAttribute("playTime", playTime);
 				// リクエストスコープへセット
 				
